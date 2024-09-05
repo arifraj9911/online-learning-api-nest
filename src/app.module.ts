@@ -7,6 +7,7 @@ import { User } from './user/entity/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { ProfileModule } from './profile/profile.module';
 import { CourseModule } from './course/course.module';
+import { Course } from './course/entity/course.entity';
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { CourseModule } from './course/course.module';
       username: 'postgres',
       password: 'arif@210505',
       database: 'learningApiDB',
-      entities: [User],
+      entities: [User, Course],
       synchronize: true,
     }),
     AuthModule,
