@@ -28,12 +28,12 @@ export class UserService {
     return this.userRepository.findOne({ where: { id } });
   }
 
-  deleteUser(id: number) {
-    return this.userRepository.delete(id);
-  }
-
   //   get user validation with email
   findByEmail(email: string) {
     return this.userRepository.findOne({ where: { email } });
+  }
+
+  deleteUser(id: number) {
+    return this.userRepository.delete(id);
   }
 }

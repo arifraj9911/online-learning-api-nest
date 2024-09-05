@@ -19,11 +19,11 @@ export class User {
   @Column()
   role: string;
 
-  // each student can make many enrollment
-  @OneToMany(() => Enrollment, (enroll) => enroll.student)
-  enrolls: Enrollment[];
-
   // each teacher can create many course
   @OneToMany(() => Course, (course) => course.teacher)
   courses: Course[];
+
+  // each student can make many enrollment
+  @OneToMany(() => Enrollment, (enrollment) => enrollment.student)
+  enrollments: Enrollment[];
 }

@@ -9,10 +9,10 @@ export class Enrollment {
   id: number;
 
   //   each student can enroll many course
-  @ManyToOne(() => User, (user) => user.enrolls, { eager: true })
+  @ManyToOne(() => User, (user) => user.enrollments, { eager: true })
   student: User;
 
   //   each course can have many enrollment
-  @ManyToOne(() => Course, (course) => course.enrolls, { eager: true })
+  @ManyToOne(() => Course, (course) => course.enrollments, { eager: true })
   course: Course;
 }

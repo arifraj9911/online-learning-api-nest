@@ -6,7 +6,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from 'src/RBAC/roles.guard';
+import { RolesGuard } from 'src/roles.guard';
 
 @Controller('profile')
 export class ProfileController {

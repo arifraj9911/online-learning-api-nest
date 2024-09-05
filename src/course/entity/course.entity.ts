@@ -11,7 +11,7 @@ import {
 @Entity()
 export class Course {
   @PrimaryGeneratedColumn()
-  courseId: number;
+  id: number;
 
   @Column()
   title: string;
@@ -25,11 +25,11 @@ export class Course {
   @Column()
   videoURL: string;
 
-  // one course can have many enrollment
-  @OneToMany(() => Enrollment, (enroll) => enroll.course)
-  enrolls: Enrollment[];
-
   // each teacher can create many course
   @ManyToOne(() => User, (user) => user.courses)
   teacher: User;
+
+  // one course can have many enrollment
+  @OneToMany(() => Enrollment, (enrollment) => enrollment.course)
+  enrollments: Enrollment[];
 }
