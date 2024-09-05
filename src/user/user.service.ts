@@ -31,4 +31,9 @@ export class UserService {
   deleteUser(id: number) {
     return this.userRepository.delete(id);
   }
+
+  //   get user validation with email
+  findByEmail(email: string) {
+    return this.userRepository.findOne({ where: { email } });
+  }
 }
