@@ -42,9 +42,13 @@ export class CourseService {
   }
 
   // enroll course
-  async enroll(id: number, passcode: string, student: User): Promise<any> {
+  async enrollCourse(
+    courseId: number,
+    passcode: string,
+    student: User,
+  ): Promise<any> {
     const course = await this.courseRepository.findOne({
-      where: { id },
+      where: { id: courseId },
     });
 
     if (!course) {

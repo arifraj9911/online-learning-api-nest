@@ -13,6 +13,9 @@ export class Enrollment {
   student: User;
 
   //   each course can have many enrollment
-  @ManyToOne(() => Course, (course) => course.enrollments, { eager: true })
+  @ManyToOne(() => Course, (course) => course.enrollments, {
+    eager: true,
+    onDelete: 'CASCADE',
+  })
   course: Course;
 }
