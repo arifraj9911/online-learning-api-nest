@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "0b8a3fc1-73cf-4236-9f0f-27f402738052",
+		"name": "Learning API Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38035064"
+	},
+	"item": [
+		{
+			"name": "Get all user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/user",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Profile",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJzdWIiOjQsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzI1NjEyNzI4LCJleHAiOjE3MjU2MTI4NDh9.qzFGCOC2jWwJSNczbuGAfY9-JMMTCj-SKHyhB1-eo1w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/profile/student",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"profile",
+						"student"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication teacher",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"arif.raj9911@gmail.com\",\r\n    \"password\":\"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "authentication student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"raj@gmail.com\",\r\n    \"password\":\"raj\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all course",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/course",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "course create by teacher",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFyaWYucmFqOTkxMUBnbWFpbC5jb20iLCJzdWIiOjEsInJvbGUiOiJ0ZWFjaGVyIiwiaWF0IjoxNzI1NjEyOTY4LCJleHAiOjE3MjU2MTMwODh9.Tn8NDMaTWiPS0XXer633sNTpgkvua1K4KB4Uc7pu184",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \r\n        \"title\": \"Biology\",\r\n        \"description\": \"Biology literature encompasses the body of written works produced in the English language, including poetry, prose, drama, and novels. It spans from early medieval texts like *Beowulf* to modern works by authors like Virginia Woolf and George Orwell. Major literary movements include the Renaissance, Romanticism, Victorian literature, and Modernism. Key figures such as William Shakespeare, Charles Dickens, and Jane Austen have shaped its evolution. English literature explores themes of human nature, society, love, and identity, reflecting cultural and historical contexts. It continues to evolve, offering diverse voices and perspectives across genres and time periods.\",\r\n        \"passcode\": \"bio123\",\r\n        \"videoURL\": \"https://youtu.be/fQfZtg9Y_6k?si=-G9eI1IedSNxu5PA\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/course",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"course"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "enroll course by courseId and passcode",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJzdWIiOjQsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzI1NjEzMTE5LCJleHAiOjE3MjU2MTMyMzl9.j2znsa1QgXWElo75H8kNe8_FPw74ktRsOcKxzwKd964",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"courseId\":12,\r\n    \"passcode\":\"bio123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/course/enroll",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"course",
+						"enroll"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove enroll course by teacher",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFyaWYucmFqOTkxMUBnbWFpbC5jb20iLCJzdWIiOjEsInJvbGUiOiJ0ZWFjaGVyIiwiaWF0IjoxNzI1NjEzMjE0LCJleHAiOjE3MjU2MTMzMzR9.L1FTD0-3qrUy70tPUco9pyAqqppzAGu0ngkk9Nuk5s8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/course/12/remove-student/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"course",
+						"12",
+						"remove-student",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
