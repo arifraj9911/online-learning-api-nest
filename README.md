@@ -22,64 +22,65 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+# Online Learning API
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## API Documentation
 
-## Project setup
+The following endpoints are available for the API:
 
-```bash
-$ npm install
-```
+- **Base URL**: `http://localhost:3000`
 
-## Compile and run the project
+### Endpoints
 
-```bash
-# development
-$ npm run start
+- **Login**
+  - **Endpoint**: `POST /auth/login`
+  - **URL**: [http://localhost:3000/auth/login](http://localhost:3000/auth/login)
+  - **Request Body**:
+    ```json
+    {
+      "email": "arif.raj9911@gmail.com",
+      "password": "admin",
+      "role": "teacher"
+    }
+    ```
+  - **Description**: Requires `email`, `password`, and `role`. 
 
-# watch mode
-$ npm run start:dev
+- **Get Courses**
+  - **Endpoint**: `GET /course`
+  - **URL**: [http://localhost:3000/course](http://localhost:3000/course)
+  - **Description**: Retrieves a list of courses.
 
-# production mode
-$ npm run start:prod
-```
+- **Create Course**
+  - **Endpoint**: `POST /course`
+  - **URL**: [http://localhost:3000/course](http://localhost:3000/course)
+  - **Description**: Creates a new course. Request body should include course details.
 
-## Run tests
+- **Get Profile**
+  - **Endpoint**: `GET /profile/{role}`
+  - **URL**: [http://localhost:3000/profile/teacher](http://localhost:3000/profile/teacher) or [http://localhost:3000/profile/student](http://localhost:3000/profile/student)
+  - **Description**: Retrieves profile information for `teacher` or `student`.
+  - **Example Credentials**:
+    - **Teacher**: `{ "email": "arif.raj9911@gmail.com", "password": "admin" }`
+    - **Student**: `{ "email": "raj@gmail.com", "password": "raj" }`
 
-```bash
-# unit tests
-$ npm run test
+- **Get User**
+  - **Endpoint**: `GET /user`
+  - **URL**: [http://localhost:3000/user](http://localhost:3000/user)
+  - **Description**: Retrieves user information.
 
-# e2e tests
-$ npm run test:e2e
+- **Enroll in Course**
+  - **Endpoint**: `POST /course/enroll`
+  - **URL**: [http://localhost:3000/course/enroll](http://localhost:3000/course/enroll)
+  - **Request Body**:
+    ```json
+    {
+      "courseId": 9,
+      "passcode": "che123"
+    }
+    ```
+  - **Description**: Enrolls a student in a course.
 
-# test coverage
-$ npm run test:cov
-```
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+- **Remove Enrolled Student**
+  - **Endpoint**: `DELETE /course/{courseId}/remove-student/{studentId}`
+  - **URL**: [http://localhost:3000/course/{courseId}/remove-student/{studentId}](http://localhost:3000/course/{courseId}/remove-student/{studentId})
+  - **Description**: Removes an enrolled student from a course.
