@@ -31,8 +31,8 @@ export class CourseController {
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @SetMetadata('roles', ['teacher'])
-  createCourse(@Body() createCourseDto: CreateCourseDto) {
-    return this.courseService.createCourse(createCourseDto);
+  createCourse(@Body() createCourseDto: CreateCourseDto, @Request() req: any) {
+    return this.courseService.createCourse(createCourseDto, req.user);
   }
 
   @Patch('/:id')
@@ -64,5 +64,17 @@ export class CourseController {
   enrollCourse(@Body() enrollDto: EnrollDto, @Request() req: any) {
     const { courseId, passcode } = enrollDto;
     return this.courseService.enrollCourse(courseId, passcode, req.user);
+  }
+
+  // delete student from their course
+  @Delete('/:courseId/remove-student/:studentId')
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @SetMetadata('roles', ['teacher'])
+  removeEnroll(
+    @Param('courseId', ParseIntPipe) courseId: number,
+    @Param('studentId', ParseIntPipe) studentId: number,
+    @Request() req: any,
+  ) {
+    return this.courseService.removeEnroll(courseId, studentId, req.user);
   }
 }

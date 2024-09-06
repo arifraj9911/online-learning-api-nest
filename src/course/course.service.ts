@@ -25,8 +25,12 @@ export class CourseService {
     return this.courseRepository.find();
   }
 
-  createCourse(createCourseDto: CreateCourseDto) {
-    return this.courseRepository.save(createCourseDto);
+  createCourse(createCourseDto: CreateCourseDto, teacher: User) {
+    const course = this.courseRepository.create({
+      ...createCourseDto,
+      teacher,
+    });
+    return this.courseRepository.save(course);
   }
 
   updateCourse(updateCourseDto: UpdateCourseDto, id: number) {
@@ -77,5 +81,34 @@ export class CourseService {
     });
 
     return this.enrollmentRepository.save(enrollment);
+  }
+
+  // remove enroll
+  async removeEnroll(courseId, studentId, teacher: User): Promise<any> {
+    const course = await this.courseRepository.findOne({
+      where: { id: courseId },
+      relations: ['teacher'],
+    });
+
+    if (!course) {
+      throw new NotFoundException('Course Not Found');
+    }
+
+    if (course.teacher.id !== teacher.id) {
+      throw new UnauthorizedException('You are not the owner of this course');
+    }
+
+    const enrollment = await this.enrollmentRepository.findOne({
+      where: {
+        course: { id: courseId },
+        student: { id: studentId },
+      },
+    });
+
+    if (!enrollment) {
+      throw new NotFoundException('Enrollment not found');
+    }
+
+    return this.enrollmentRepository.delete(enrollment.id);
   }
 }
